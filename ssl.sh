@@ -568,7 +568,7 @@ install_ssl() {
     
     source /root/ssl_config/config_$DOMAIN
     
-    local cert_dir="/root/cert/$DOMAIN"
+    local cert_dir="/root/.cert/$DOMAIN"
     local web_dir="/var/www/$DOMAIN"
     
     # 创建证书目录
@@ -699,7 +699,7 @@ remove_ssl_certificate() {
     echo
     for i in "${!cert_list[@]}"; do
         local domain="${cert_list[$i]}"
-        local cert_dir="/root/cert/$domain"
+        local cert_dir="/root/.cert/$domain"
         local status=""
         
         if [[ -d "$cert_dir" ]]; then
@@ -758,7 +758,7 @@ remove_ssl_certificate() {
     fi
     
     # 删除本地证书文件
-    local cert_dir="/root/cert/$selected_domain"
+    local cert_dir="/root/.cert/$selected_domain"
     if [[ -d "$cert_dir" ]]; then
         echo -ne "${YELLOW}[WAIT]${NC} 删除本地证书文件 "
         rm -rf "$cert_dir"
